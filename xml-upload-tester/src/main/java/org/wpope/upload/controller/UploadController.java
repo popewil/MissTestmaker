@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.wpope.upload.domain.request.UploadRequest;
 import org.wpope.upload.service.UploadService;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 @Controller
@@ -22,16 +22,16 @@ public class UploadController {
     @Autowired
     private UploadService service;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public String loadOptions(ModelMap model) {
         log.info("Retrieving model for upload service.");
 
-        Map<String, String> actions = new HashMap<String, String>();
+        Map<String, String> actions = new LinkedHashMap<String, String>();
         actions.put("Add/Update", "add");
         actions.put("Delete", "delete");
         model.addAttribute("actions", actions);
 
-        Map<String, String> products = new HashMap<String, String>();
+        Map<String, String> products = new LinkedHashMap<String, String>();
         products.put("ABC", "abc");
         products.put("MNO", "mno");
         products.put("PQR", "pqr");
@@ -41,7 +41,7 @@ public class UploadController {
         return "upload";
     }
 
-    @RequestMapping(value = "/submit", method = RequestMethod.POST)
+    @RequestMapping(value = "submit", method = RequestMethod.POST)
     public String submitForm(UploadRequest request, ModelMap model) {
 
         log.info("Writing XML to file.");

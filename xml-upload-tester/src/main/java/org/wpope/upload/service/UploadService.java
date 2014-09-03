@@ -18,7 +18,12 @@ public class UploadService {
         try {
             File file = new File("F:/Temp/" + request.getAction() + "_" + request.getProduct() + ".xml");
             FileOutputStream outputStream = new FileOutputStream(file);
-            IOUtils.write(request.getXml(), outputStream);
+            if (request.getFile() != null) {
+                IOUtils.write(request.getFile().getBytes(), outputStream);
+            } else {
+                IOUtils.write(request.getXml(), outputStream);
+            }
+            outputStream.close();
         } catch (Exception ex) {
             log.error("Exception:", ex);
         }

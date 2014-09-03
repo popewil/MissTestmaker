@@ -1,10 +1,13 @@
 package org.wpope.upload.domain.request;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class UploadRequest {
 
     String action;
     String product;
     String xml;
+    MultipartFile file;
 
     public String getAction() {
         return action;
@@ -28,6 +31,14 @@ public class UploadRequest {
 
     public void setXml(String xml) {
         this.xml = xml;
+    }
+
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    public void setFile(MultipartFile file) {
+        this.file = file;
     }
 
     @Override
