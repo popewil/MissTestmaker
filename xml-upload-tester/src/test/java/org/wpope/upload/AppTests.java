@@ -1,4 +1,4 @@
-package org.wpope.xmlUpload;
+package org.wpope.upload;
 
 import org.junit.Before;
 import org.junit.Test;
